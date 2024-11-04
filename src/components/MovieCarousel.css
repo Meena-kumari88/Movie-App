@@ -1,0 +1,54 @@
+.movie-carousel {
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px 0;
+   
+  }
+  
+  .movie-slide {
+    position: relative;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .movie-slide:hover {
+    transform: scale(1.02);
+  }
+  
+  .movie-poster {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+  }
+  
+  .movie-slide:hover .movie-poster {
+    transform: scale(1.05);
+  }
+  
+  .movie-info {
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .movie-info h3 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #fff;
+  }
+  
+  .movie-info p {
+    font-size: 0.9em;
+    color: #ddd;
+  }
+  

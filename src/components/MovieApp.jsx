@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import NavBar from './NavBar';
 import Pagination from './Pagination';
-import './MovieApp.css';
+import MovieCarousel from './MovieCarousel'; // Import the MovieCarousel component
 import { fetchGenres, fetchMovies } from './api'; 
+import './MovieApp.css';
 
 const MovieRecommendations = () => {
   const [movies, setMovies] = useState([]);
@@ -29,18 +30,9 @@ const MovieRecommendations = () => {
     loadMovies();
   }, [searchQuery, sortBy, selectedGenre, page]);
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSortChange = (event) => {
-    setSortBy(event.target.value);
-  };
-
-  const handleGenreChange = (event) => {
-    setSelectedGenre(event.target.value);
-  };
-
+  const handleSearchChange = (event) => setSearchQuery(event.target.value);
+  const handleSortChange = (event) => setSortBy(event.target.value);
+  const handleGenreChange = (event) => setSelectedGenre(event.target.value);
   const handleSearchSubmit = async () => {
     setPage(1);
     const moviesData = await fetchMovies(sortBy, 1, selectedGenre, searchQuery);
@@ -53,39 +45,17 @@ const MovieRecommendations = () => {
 
   return (
     <div>
-      <h1>FilmHaven</h1>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search movies..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="search-input"
-        />
-        <button onClick={handleSearchSubmit} className="search-button">
-          <AiOutlineSearch />
-        </button>
-      </div>
-      <div className="filters">
-        <label htmlFor="sort-by">Sort By:</label>
-        <select id="sort-by" value={sortBy} onChange={handleSortChange}>
-          <option value="popularity.desc">Popularity Descending</option>
-          <option value="popularity.asc">Popularity Ascending</option>
-          <option value="vote_average.desc">Rating Descending</option>
-          <option value="vote_average.asc">Rating Ascending</option>
-          <option value="release_date.desc">Release Date Descending</option>
-          <option value="release_date.asc">Release Date Ascending</option>
-        </select>
-        <label htmlFor="genre">Genre:</label>
-        <select id="genre" value={selectedGenre} onChange={handleGenreChange}>
-          <option value="">All Genres</option>
-          {genres.map((genre) => (
-            <option key={genre.id} value={genre.id}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <NavBar
+        sortBy={sortBy}
+        onSortChange={handleSortChange}
+        genres={genres}
+        selectedGenre={selectedGenre}
+        onGenreChange={handleGenreChange}
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
+        onSearchSubmit={handleSearchSubmit}
+      />
+      <MovieCarousel /> 
       <div className="movie-wrapper">
         {movies.map((movie) => (
           <div key={movie.id} className="movie">
