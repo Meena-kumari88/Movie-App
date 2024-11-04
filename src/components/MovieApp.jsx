@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import Pagination from './Pagination';
-import MovieCarousel from './MovieCarousel'; // Import the MovieCarousel component
+import MovieCarousel from './MovieCarousel'; 
 import { fetchGenres, fetchMovies } from './api'; 
 import './MovieApp.css';
 
@@ -43,6 +43,24 @@ const MovieRecommendations = () => {
     setExpandedMovieId(expandedMovieId === movieId ? null : movieId);
   };
 
+  // Function to render star ratings with numerical value
+  const renderStarsWithNumber = (rating) => {
+    const stars = [];
+    const roundedRating = Math.round(rating); 
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span key={i} style={{ color: i <= roundedRating ? '#e50914' : '#ccc' }}>
+          ★
+        </span>
+      );
+    }
+    return (
+      <div className="rating">
+        {stars} <span style={{ marginLeft: '8px', color: '#000' }}>{rating.toFixed(1)}</span>
+      </div>
+    );
+  };
+
   return (
     <div>
       <NavBar
@@ -65,7 +83,7 @@ const MovieRecommendations = () => {
             />
             <h2>{movie.title}</h2>
             <h3>{new Date(movie.release_date).getFullYear()}</h3>
-            <p className="rating">Rating: {movie.vote_average}</p>
+            {renderStarsWithNumber(movie.vote_average)} 
             {expandedMovieId === movie.id ? (
               <p>{movie.overview}</p>
             ) : (

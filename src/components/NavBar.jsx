@@ -45,19 +45,19 @@ const NavBar = ({ sortBy, onSortChange, genres, selectedGenre, onGenreChange, se
 
       {/* Search bar on the right for larger devices */}
       <div className="navbar-right">
-        <div className="search-bar">
-          <input
+    <div className="search-bar">
+        <input
             type="text"
             placeholder="Search movies..."
             value={searchQuery}
             onChange={onSearchChange}
             className="search-input"
-          />
-          <button onClick={onSearchSubmit} className="search-button">
+        />
+        <button onClick={onSearchSubmit} className="search-button">
             <AiOutlineSearch />
-          </button>
-        </div>
-      </div>
+        </button>
+    </div>
+</div>
       
       {/* Display dropdowns below search bar on mobile */}
       {isMobile && (
