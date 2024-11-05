@@ -1,103 +1,101 @@
 .movie-carousel {
-  max-width: 80%;
+  max-width: 90%;   
   margin: auto;
-  text-align: center;
-  padding: 50px 0;
+  padding: 20px 0;  
+  position: relative;
+  margin-top: 30px;
+  
 }
+
 
 .movie-slide {
   position: relative;
-  padding: 10px;
+  width: 100%;             
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: transform 0.1s ease-in-out;
-}
+  transition: transform 0.3s ease-in-out, opacity 0.3s;
+  opacity: 0.9;             
+  margin: 0 10px;        
 
+}
 .movie-slide:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);    
+  z-index: 2;                 
+  opacity: 1;                
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Center Slide Additional Effect */
+.movie-slide.slick-center {
+  transform: scale(1.1);      
+  opacity: 1;
+}
 .movie-poster {
-  width: 100%;
+  width: 100%;                
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);  
+  transition: transform 0.3s; 
+  height: 60vh;
 }
 
-.movie-slide:hover .movie-poster {
-  transform: scale(1.05);
-}
 
 .movie-info {
-  position: absolute;
-  bottom: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 15px;
+  width: 100%;               
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
   border-radius: 10px;
-  width: 90%;
+  position: relative;
   text-align: center;
+  box-sizing: border-box;      
+  color: white;
 }
 
 .movie-info h3 {
-  font-size: 1.2em;
-  margin: 0;
-  color: #fff;
+  font-size: 1.1em;
+  margin: 5px 0;
 }
 
 .movie-info p {
-  font-size: 0.9em;
-  color: #ddd;
+  font-size: 0.85em;
+  color: #cccccc;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
-  .movie-carousel {
-    max-width: 90%; 
-  }
-
   .movie-info h3 {
-    font-size: 1.1em; 
+    font-size: 1em;
   }
-
   .movie-info p {
-    font-size: 0.85em; 
+    font-size: 0.8em;
   }
 }
 
 @media (max-width: 800px) {
-  .movie-carousel {
-    padding: 30px 0; 
-  }
-
   .movie-info h3 {
-    font-size: 1em; 
+    font-size: 0.95em;
   }
-
   .movie-info p {
-    font-size: 0.8em; 
+    font-size: 0.75em;
+  }
+  .movie-poster{
+    height: 50vh;
   }
 }
 
 @media (max-width: 450px) {
-  .movie-carousel {
-    padding: 20px 0; 
-  }
-
-  .movie-slide {
-    padding: 5px; 
-  }
-
-  .movie-info {
-    padding: 10px; 
-  }
-
   .movie-info h3 {
-    font-size: 0.9em; 
+    font-size: 0.85em;
   }
-
   .movie-info p {
-    font-size: 0.7em; 
+    font-size: 0.7em;
+  }
+  .movie-poster{
+    height: 40vh;
+  }
+  
+  .movie-slide {
+    margin: 0;              
+    width: 100%;            
   }
 }

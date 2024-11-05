@@ -3,6 +3,8 @@ import NavBar from './NavBar';
 import Pagination from './Pagination';
 import MovieCarousel from './MovieCarousel'; 
 import { fetchGenres, fetchMovies } from './api'; 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './MovieApp.css';
 
 const MovieRecommendations = () => {
@@ -39,9 +41,11 @@ const MovieRecommendations = () => {
     setMovies(moviesData);
   };
 
+  
   const toggleDescription = (movieId) => {
     setExpandedMovieId(expandedMovieId === movieId ? null : movieId);
   };
+  
 
   // Function to render star ratings with numerical value
   const renderStarsWithNumber = (rating) => {
@@ -89,10 +93,7 @@ const MovieRecommendations = () => {
             ) : (
               <p>{movie.overview.substring(0, 150)}...</p>
             )}
-            <button
-              onClick={() => toggleDescription(movie.id)}
-              className="read-more"
-            >
+            <button onClick={() => toggleDescription(movie.id)} className='read-more'>
               {expandedMovieId === movie.id ? 'Show Less' : 'Read More'}
             </button>
           </div>
