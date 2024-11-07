@@ -31,7 +31,7 @@ const MovieCarousel = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: '0',
+    centerPadding: '5',
     autoplay: true,           
     autoplaySpeed: 3000,      
   };

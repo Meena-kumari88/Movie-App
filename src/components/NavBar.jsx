@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import './NavBar.css';
 
@@ -10,7 +10,7 @@ const NavBar = ({ sortBy, onSortChange, genres, selectedGenre, onGenreChange, se
     setIsMobile(window.innerWidth <= 768);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
